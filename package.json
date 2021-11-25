@@ -1,0 +1,20 @@
+{
+  "name": "bask",
+  "version": "1.0.0",
+  "description": "bask fire blood basketball",
+  "main": "index.js",
+  "scripts": {
+    "server": "node server/src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BadWaka/bask.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BadWaka/bask/issues"
+  },
+  "homepage": "https://github.com/BadWaka/bask#readme"
+}
