@@ -1,5 +1,12 @@
+const path = require('path');
 const Koa = require("koa");
+const static_ = require('koa-static');
+
 const app = new Koa();
+
+app.use(static_(
+    path.join(__dirname, '../static')
+));
 
 app.use(async (ctx) => {
     ctx.body = "Hello World";

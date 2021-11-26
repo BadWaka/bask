@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Marco智能随机分组系统</title>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    * {
+    	margin:0;
+    	padding:0;
+    }
+    html,body {
+    	height:100%;
+    	background:#3ba;
+    }
+    input {
+    	overflow:hidden;
+    }
+    label.a {
+    	float:left;
+    	height:38px;
+    	line-height:18px;
+    }
+    input[type="number"] {
+    	width:100px;
+    }
+    table {
+    	margin-top:10px;
+    	border:1px solid #ccc;
+    	border-collapse:collapse;
+    }
+    td {
+    	text-align:center;
+    	border:1px solid #ccc;
+    }
+    .box {
+    	position:absolute;
+    	min-width:500px;
+    	border:4px solid #fc0;
+    	padding:20px;
+    	left:50%;
+    	transform:translateX(-50%);
+    	background:#fff;
+    }
+    h2 {
+    	text-align:center;
+    	color:#58bc58;
+    	margin-bottom:20px;
+    	font-weight:bold;
+    }
+    .form-group {
+    	overflow:hidden;
+    }
+    .radio {
+    	overflow:hidden;
+    	margin-bottom:5px;
+    }
+    .radio .b {
+    	float:left;
+    	margin-right:10px;
+    }
+</style>
+</head>
+<body>
+    <div class="box">
+        <h2>智能随机分组系统</h2>
+        <div class="form-group">
+            <label for="total" class="a">请输入总人数：</label>
+            <input type="number" class="form-control" id="total" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <label for="qty" class="a">请输入每组人数：</label>
+            <input type="number" class="form-control" id="qty">
+        </div>
+        <div class="radio">
+            <p class="b">最后一组人数不足时，是否成立一组：</p>
+            <div class="custom-control custom-radio b">
+                <input type="radio" id="customRadio1" name="single" class="custom-control-input" checked="" value="yes">
+                <label class="custom-control-label" for="customRadio1">是</label>
+            </div>
+            <div class="custom-control custom-radio b">
+                <input type="radio" id="customRadio2" name="single" class="custom-control-input" value="no">
+                <label class="custom-control-label" for="customRadio2">否</label>
+            </div>
+        </div>
+        <button class="btn btn-outline-success" id="btn">开始分组</button>
+        <div id="output"></div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            $("input.form-control").blur(function(e) {
+                $(this).val(Math.round(e.target.value));
+            })
+            $("#btn").click(function() {
+                var total = $('#total').val() * 1;
+                var qty = $("#qty").val() * 1;
+                var $single = $('input[name=single]');
+                var _single;
+                $single.each((idx, item) => {
+                    if (item.checked) { // 判断剩余人数是否独立生成一组
+                        _single = item.value;
+                    }
+                })
+                // 表单验证
+                if (total == "") {
+                    alert("请输入总人数！")
+                    $('#total').focus();
+                    return false;
+                } else if (qty == "") {
+                    alert("请输入每组人数！");
+                    $("#qty").focus();
+                    return false;
+                }
+                if (qty > total) {
+                    alert("每组人数不能大于总人数！");
+                    $("#qty").focus();
+                    return false;
+                } else {
+                    var grounp = _single == "yes" ? Math.ceil(total / qty) : Math.floor(total / qty);
+                    if (_single == "no") { // 如果剩余人数不单独生成一组，则需进行以下验证
+                        var rem = total % qty;
+                        if (rem > grounp) { // 如果剩余人数大于组数
+                            // 建议增大人数
+                            var adviceMore = qty + parseInt(rem / grounp);
+                            // 建议减少人数
+                            var adviceLess = qty - 1;
+                            var lessGrounp = parseInt(total / adviceLess); //减1后的组数
+                            var lessRem = total % adviceLess; // 减1后剩余人数
+                            while (lessRem > lessGrounp) { // while 循环直到剩余人数小于组数
+                                adviceLess--;
+                                lessGrounp = parseInt(total / adviceLess);
+                                lessRem = total % adviceLess;
+                            }
+                            var num = prompt("当前分组方式最后剩余人数" + rem + "，大于分组数" + grounp + "，您可选择： 1、增大每组人数（建议" + adviceMore + "人）或  2、减少每组人数（建议" + adviceLess + "人），以使分组合适！请选择(1或2)：")
+                            if (num == "1") {
+                                $("#qty").val(adviceMore); // 增大人数
+                            } else if (num == "2") {
+                                $("#qty").val(adviceLess); // 减少人数
+                            } else {
+                                $("#qty").val(adviceMore);
+                                alert("温馨提示：您的选择有误，已默认为您选择方案1！")
+                            }
+                            return false;
+                        }
+                    }
+                    var total_arr = [];
+                    for (var i = 1; i <= total; i++) { // 根据总人数生成总人数编号数组
+                        total_arr.push(i);
+                    }
+                    var arr_big = []; // 用于存放所有分组，结果集
+                    for (var i = 1; i <= grounp; i++) { // 遍历分组数
+                        var arr_min = []; // 用于存放每个分组的人员编号
+                        for (var j = 1; j <= qty; j++) { // 嵌套遍历每个分组的人数
+                            if (total_arr.length <= 0) { // 若总人数数组已经被删光，证明已经全部分配完，此时可结束当前循环
+                                break;
+                            }
+                            var randomIdx = parseInt(Math.random() * total_arr.length); // 生成一个 0?总人数 的随机数，用于在总人数数组中随机抽取编号
+                            arr_min.push(total_arr[randomIdx]); // 将抽取的编号加入当前所循环的分组
+                            total_arr.splice(randomIdx, 1); // 加入后，删除该编号
+                        }
+                        arr_big.push(arr_min); // 一个小分组添加完毕后，加入结果集
+                    }
+                    if (total_arr.length > 0) { // 若上面遍历完所有分组后，总人数数组还有编号，则这些编号是剩余人数，应随机分配给以上小分组
+                        var randomArr = []; // 定义一个临时数组，用于存放已经有被分配到剩余编号的小分组
+                        for (var i = 0; i < total_arr.length; i++) { //遍历剩余人数
+                            var randomNum = parseInt(Math.random() * arr_big.length) // 生成一个 0?分组数 的随机数，用于在目前所有小分组中随机抽取一个小分组
+                            while (randomArr.includes(randomNum)) { // while循环直到该小分组是没有被分配过剩余编号的
+                                randomNum = parseInt(Math.random() * arr_big.length)
+                            }
+                            randomArr.push(randomNum); // 将分配过剩余编号的小分组记录到临时数组
+                            arr_big[randomNum].push(total_arr[i]); // 将当前遍历的剩余编号加入随机筛选出来的小分组
+                        }
+                    }
+                    //写入页面
+                    var $table = $('<table class="table table-bordered"></table>');
+                    arr_big.forEach((item, idx) => {
+                        var $tr = $(`<tr><td scope="row">第${idx+1}组</td></tr>`);
+                        item.forEach((item2, idx) => {
+                            $tr.append($(`<td scope="row">${item2}</td>`))
+                        })
+                        $table.append($tr);
+                    })
+                    $("#output").html('');
+                    $table.appendTo("#output");
+                }
+            })
+        })
+    </script>
+</body>
+</html>
