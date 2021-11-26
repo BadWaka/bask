@@ -21,7 +21,7 @@
                 <el-submenu index="3">
                     <template slot="title">内部赛</template>
                     <el-menu-item index="3-1">分组抽签</el-menu-item>
-                    <el-menu-item index="3-2">查看赛程</el-menu-item>
+                    <el-menu-item index="3-2">赛程</el-menu-item>
                 </el-submenu>
                 <el-menu-item index="4">
                     外部友谊赛
