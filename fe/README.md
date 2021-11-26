@@ -1,5 +1,13 @@
 # fe
 
+## 注意事项
+
+本项目才用 webpack 4.46.0 版本，不兼容高版本 less
+
+From v11.0.0 of sass-loader and v8.0.0 of less-loader, the
+
+> minimum supported webpack version is 5
+
 ## Project setup
 ```
 pnpm install
