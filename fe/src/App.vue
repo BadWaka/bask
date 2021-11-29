@@ -1,12 +1,13 @@
 <template>
     <div id="app">
         <fe-header msg="Welcome to Your Vue.js App"/>
-        <!-- <el-button type="primary">主要按钮</el-button> -->
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
+import Header from './components/Header.vue';
+// import People from './views/People.vue';
 
 export default {
     name: 'App',

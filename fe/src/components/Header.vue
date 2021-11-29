@@ -36,6 +36,19 @@ export default {
     name: 'Header',
     props: {
         msg: String
+    },
+    data: function () {
+        return {
+            activeIndex: '1'
+        }
+    },
+    methods: {
+        handleSelect(index, indexPath) {
+            console.log('handleSelect index', index, 'indexPath', indexPath, 'activeIndex', this.activeIndex);
+            if (index === '1') {
+                this.$router.push('people');
+            }
+        }
     }
 }
 </script>
