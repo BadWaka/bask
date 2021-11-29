@@ -3,6 +3,7 @@ const path = require('path');
 const Koa = require("koa");
 const static_ = require('koa-static');
 const Router = require('koa-router');
+const cors = require('koa2-cors');
 
 const {
     getIP
@@ -28,6 +29,13 @@ app
     .use(static_(
         path.join(__dirname, '../static')
     ))
+    .use(cors({
+        origin: (ctx) => {
+            return '*';
+        },
+        // credentials: true,
+        allowMethods: ['GET', 'POST', 'DELETE']
+    }))
     // 路由
     .use(router.routes())
     .use(router.allowedMethods());

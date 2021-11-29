@@ -4,12 +4,14 @@ specifiers:
   koa: ^2.13.4
   koa-router: ^10.1.1
   koa-static: ^5.0.0
+  koa2-cors: ^2.0.6
   mongodb: ^4.2.0
 
 dependencies:
   koa: 2.13.4
   koa-router: 10.1.1
   koa-static: 5.0.0
+  koa2-cors: 2.0.6
   mongodb: 4.2.0
 
 packages:
@@ -293,6 +295,11 @@ packages:
       vary: 1.1.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /koa2-cors/2.0.6:
+    resolution: {integrity: sha512-JRCcSM4lamM+8kvKGDKlesYk2ASrmSTczDtGUnIadqMgnHU4Ct5Gw7Bxt3w3m6d6dy3WN0PU4oMP43HbddDEWg==}
+    engines: {node: '>= 7.6.0'}
     dev: false
 
   /media-typer/0.3.0:

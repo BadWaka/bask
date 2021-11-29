@@ -12,12 +12,14 @@ specifiers:
   less: ^4.1.2
   less-loader: '7'
   vue: ^2.6.11
+  vue-router: ^3.5.3
   vue-template-compiler: ^2.6.11
 
 dependencies:
   core-js: registry.npmmirror.com/core-js/3.19.1
   element-ui: 2.15.6_vue@2.6.14
   vue: registry.npmmirror.com/vue/2.6.14
+  vue-router: 3.5.3
 
 devDependencies:
   '@vue/cli-plugin-babel': registry.npmmirror.com/@vue/cli-plugin-babel/4.5.15_4c1e5ebbf041a85328f9984e4ede8f8a
@@ -240,6 +242,18 @@ packages:
       to-regex-range: 5.0.1
     dev: true
     optional: true
+
+  /follow-redirects/1.14.5_debug@4.3.2:
+    resolution: {integrity: sha512-wtphSXy7d4/OR+MvIFbCVBDzZ5520qV8XfPklSN5QtxuMUJZ+b0Wnst1e1lCDocfzuCkHqj8k0FpZqO+UIaKNA==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dependencies:
+      debug: registry.npmmirror.com/debug/4.3.2
+    dev: true
 
   /fsevents/1.2.13:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
@@ -564,6 +578,10 @@ packages:
       webpack: registry.npmmirror.com/webpack/4.46.0
     dev: true
     optional: true
+
+  /vue-router/3.5.3:
+    resolution: {integrity: sha512-FUlILrW3DGitS2h+Xaw8aRNvGTwtuaxrRkNSHWTizOfLUie7wuYwezeZ50iflRn8YPV5kxmU2LQuu3nM/b3Zsg==}
+    dev: false
 
   /watchpack-chokidar2/2.0.1:
     resolution: {integrity: sha512-nCFfBIPKr5Sh61s4LPpy1Wtfi0HE8isJ3d2Yb5/Ppw2P2B/3eVSEBjKfN0fmHJSK14+31KwMKmcrzs2GM4P0Ww==}
@@ -3666,7 +3684,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: registry.nlark.com/eventemitter3/4.0.7
-      follow-redirects: registry.npmmirror.com/follow-redirects/1.14.5_debug@4.3.2
+      follow-redirects: 1.14.5_debug@4.3.2
       requires-port: registry.nlark.com/requires-port/1.0.0
     transitivePeerDependencies:
       - debug
@@ -10004,21 +10022,6 @@ packages:
     resolution: {integrity: sha1-RXWyHivO50NKqb5mL0t7X5wrUTg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/flatted/download/flatted-2.0.2.tgz}
     name: flatted
     version: 2.0.2
-    dev: true
-
-  registry.npmmirror.com/follow-redirects/1.14.5_debug@4.3.2:
-    resolution: {integrity: sha1-8JpYSJgdPHcrU5Iwl3hSP42Fw4E=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/follow-redirects/download/follow-redirects-1.14.5.tgz}
-    id: registry.npmmirror.com/follow-redirects/1.14.5
-    name: follow-redirects
-    version: 1.14.5
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    dependencies:
-      debug: registry.npmmirror.com/debug/4.3.2
     dev: true
 
   registry.npmmirror.com/fs-write-stream-atomic/1.0.10:
