@@ -1,19 +1,40 @@
 const path = require('path');
+
 const Koa = require("koa");
 const static_ = require('koa-static');
+const Router = require('koa-router');
+
+const {
+    getIP
+} = require('./utils');
+const {
+    api
+} = require('./api');
+const {
+    initDB
+} = require('./db');
 
 const app = new Koa();
+const router = new Router();
 
-app.use(static_(
-    path.join(__dirname, '../static')
-));
+// 初始化数据库
+initDB(app);
 
-app.use(async (ctx) => {
-    ctx.body = "Hello World";
-});
+// 设置接口
+api(router, app);
+
+app
+    // 静态资源目录
+    .use(static_(
+        path.join(__dirname, '../static')
+    ))
+    // 路由
+    .use(router.routes())
+    .use(router.allowedMethods());
 
 const port = 8848;
 
 app.listen(port);
 
 console.log('服务启动 server started, url: ' + `http://localhost:${port}/`);
+console.log('服务启动 server started, url: ' + `http://${getIP()}:${port}/`);

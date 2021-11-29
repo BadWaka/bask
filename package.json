@@ -4,7 +4,10 @@
   "description": "bask fire blood basketball",
   "main": "index.js",
   "scripts": {
-    "server": "node server/src/index.js"
+    "server:dev": "node server/src/index.js",
+    "server:start": "pm2 start --name bask-server npm -- run server",
+    "server:stop": "pm2 stop bask-server",
+    "server:restart": "pm2 restart bask-server"
   },
   "repository": {
     "type": "git",
