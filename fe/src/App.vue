@@ -7,12 +7,18 @@
 
 <script>
 import Header from './components/Header.vue';
-// import People from './views/People.vue';
+// import {
+//     getPeople
+// } from './http/index';
 
 export default {
     name: 'App',
     components: {
         'fe-header': Header
+    },
+    async mounted() {
+        // const people = await getPeople();
+        // console.log('people', people);
     }
 }
 </script>

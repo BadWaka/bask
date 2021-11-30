@@ -9,6 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 import App from './App.vue';
 import People from './views/People.vue';
+import DivideGroup from './views/DivideGroup.vue';
 
 Vue.config.productionTip = false;
 
@@ -20,6 +21,10 @@ const routes = [
     {
         path: '/people',
         component: People
+    },
+    {
+        path: '/divideGroup',
+        component: DivideGroup
     }
 ];
 

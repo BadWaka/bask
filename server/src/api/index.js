@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 function api(router, app) {
     router
         // 首页
@@ -10,6 +12,15 @@ function api(router, app) {
             const dbBask = dbClient.db('bask');
             const cPeople = dbBask.collection('people');
             const people = await cPeople.find({}).toArray();
+
+            // people.forEach(person => {
+            //     person.positionList = person.position.split(',').map(item => item.trim());
+            //     delete person.position;
+            //     delete person._id;
+            // });
+            // console.log('\n/api/people people', people);
+            // fs.writeFileSync('data.json', JSON.stringify(people));
+
             ctx.body = JSON.stringify(people);
         })
 }

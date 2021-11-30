@@ -16,16 +16,19 @@
                     人员管理
                 </el-menu-item>
                 <el-menu-item index="2">
+                    分组抽签
+                </el-menu-item>
+                <!-- <el-menu-item index="3">
                     排位积分管理
                 </el-menu-item>
-                <el-submenu index="3">
+                <el-menu-item index="4">
+                    外部友谊赛
+                </el-menu-item> -->
+                <!-- <el-submenu index="3">
                     <template slot="title">内部赛</template>
                     <el-menu-item index="3-1">分组抽签</el-menu-item>
                     <el-menu-item index="3-2">赛程</el-menu-item>
-                </el-submenu>
-                <el-menu-item index="4">
-                    外部友谊赛
-                </el-menu-item>
+                </el-submenu> -->
             </el-menu>
         </div>
     </div>
@@ -47,6 +50,9 @@ export default {
             console.log('handleSelect index', index, 'indexPath', indexPath, 'activeIndex', this.activeIndex);
             if (index === '1') {
                 this.$router.push('people');
+            }
+            else if (index === '2') {
+                this.$router.push('divideGroup');
             }
         }
     }
