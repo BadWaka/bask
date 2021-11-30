@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server:dev": "node server/src/index.js",
-    "server:start": "pm2 start --name bask-server npm -- run server",
+    "server:start": "pm2 start --name bask-server npm -- run server:dev",
     "server:stop": "pm2 stop bask-server",
     "server:restart": "pm2 restart bask-server"
   },
