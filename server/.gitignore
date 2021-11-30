@@ -2,6 +2,12 @@
 node_modules/
 /dist
 src/db/db.json
+static/dist/
+static/css/
+static/fonts/
+static/js/
+static/favicon.ico
+static/index.html
 
 # local env files
 .env.local
