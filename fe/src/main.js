@@ -6,6 +6,7 @@ import ElementUI from 'element-ui';
 
 import './styles/reset.css';
 import 'element-ui/lib/theme-chalk/index.css';
+import './styles/global.css';
 
 import App from './App.vue';
 import People from './views/People.vue';

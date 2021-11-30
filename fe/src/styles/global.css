@@ -1,0 +1,33 @@
+.pt10 {
+    padding-top: 10px;
+}
+.pb10 {
+    padding-bottom: 10px;
+}
+.pt20 {
+    padding-top: 20px;
+}
+.pb20 {
+    padding-bottom: 20px;
+}
+.pl20 {
+    padding-left: 20px;
+}
+.pr20 {
+    padding-right: 20px;
+}
+.mt20 {
+    margin-top: 20px;
+}
+.mr20 {
+    margin-right: 20px;
+}
+.ib {
+    display: inline-block;
+}
+.width100 {
+    width: 100px;
+}
+.width200 {
+    width: 200px;
+}
