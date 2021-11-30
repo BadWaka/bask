@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const config = require('./config.json');
 
-const host = `http://${config}:8848`;
+const host = `http://${config.ip}:8848`;
 // const host = `http://localhost:8848`;
 
 async function getPeople() {

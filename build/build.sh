@@ -8,4 +8,4 @@ rm -rf ../server/static/favicon.ico
 rm -rf ../server/static/index.html
 mv dist/* ../server/static/
 cd ..
-npm run server:restart
+# npm run server:restart
