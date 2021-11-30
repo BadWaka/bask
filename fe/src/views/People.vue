@@ -26,7 +26,7 @@
                     {{ item.name }}
                 </span>
                 <span>
-                    {{ item.position }}
+                     {{ item.positionList[0] }}
                 </span>
             </div>
         </div>

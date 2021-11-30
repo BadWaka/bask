@@ -13,6 +13,11 @@
                         class="position-tips"
                     >
                         {{ position }}
+                        <span
+                            v-if="positionObj[position]"
+                        >
+                            {{ positionObj[position].length }}
+                        </span>
                     </div>
                     <div
                         v-for="person, personIndex in positionObj[position]"
@@ -60,7 +65,6 @@ export default {
         async divideGroupByPosition() {
             const res = await getPeople();
             const people = res.data;
-            console.log('people', people);
             this.getListByPosition(people);
         },
         getListByPosition(people) {
@@ -74,7 +78,6 @@ export default {
                 }
             });
             this.positionObj = JSON.parse(JSON.stringify(this.positionObj));
-            console.log('this.positionObj', this.positionObj);
         }
     }
 }

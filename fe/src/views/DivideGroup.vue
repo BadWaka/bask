@@ -78,7 +78,7 @@
                         <span
                             v-if="groupPerson"
                         >
-                            {{ groupPerson.name }}
+                            {{ groupPerson.name }} {{ groupPerson.positionList[0] }}
                         </span>
                     </div>
                 </div>
@@ -125,7 +125,6 @@ export default {
             // 直接从服务器取数据
             const res = await getPeople();
             this.people = res.data;
-            console.log('this.people', this.people);
 
             // 本次参赛人数
             this.peopleGame = JSON.parse(JSON.stringify(this.people));
@@ -146,7 +145,6 @@ export default {
             });
             // 深复制，保证视图更新
             this.positionObj = JSON.parse(JSON.stringify(this.positionObj));
-            console.log('this.positionObj', this.positionObj);
         },
 
         // 分组
@@ -155,17 +153,13 @@ export default {
             const totalCount = this.peopleGame.length; // 总人数
             const groupCount = Math.floor(totalCount / this.countPerGroup); // 组数，向下取整
             const groupObj = {};
-            console.log('groupCount', groupCount);
 
             this.divideGroupC(groupCount, groupObj);
             this.divideGroupG(groupCount, groupObj);
             this.divideOthers(groupCount, groupObj);
 
-            console.log('groupObj', groupObj);
-
             // 转换为数组
             const groupList = Object.keys(groupObj).map(key => groupObj[key]);
-            console.log('groupList', groupList);
             // 输出至页面
             this.groupList = JSON.parse(JSON.stringify(groupList));
 
@@ -176,7 +170,6 @@ export default {
         // 给 C 分组
         divideGroupC(groupCount, groupObj) {
             const listC = this.positionObj.C;
-            console.log('C count', listC.length, 'PF count', this.positionObj.PF.length);
             // 如果 C 的人数不够，则从 PF 数组里取
             if (listC.length < groupCount) {
                 const diffCount = groupCount - listC.length;
@@ -237,12 +230,10 @@ export default {
 
         // 分配剩下的人
         divideOthers(groupCount, groupObj) {
-            console.log('groupCount', groupCount, 'groupObj', groupObj);
             Object.keys(this.positionObj).forEach(key => {
                 const list = this.positionObj[key];
                 list.forEach(person => {
                     if (person.group === undefined) {
-                        console.log('未分组的人 person.name', person.name);
                         const random = this.getRestGroupIndex(groupCount, groupObj);
                         groupObj[random].people.push(person); // 把人也放进组中
                         person.group = random; // 每个人也记录分组数据
@@ -324,7 +315,7 @@ export default {
 .person-s {
     padding: 10px;
     margin: 5px;
-    width: 100px;
+    width: 150px;
     box-sizing: border-box;
     box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
     border-radius: 9px;
