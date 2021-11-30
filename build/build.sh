@@ -7,4 +7,5 @@ rm -rf ../server/static/js
 rm -rf ../server/static/favicon.ico
 rm -rf ../server/static/index.html
 mv dist/* ../server/static/
+cd ..
 npm run server:restart
