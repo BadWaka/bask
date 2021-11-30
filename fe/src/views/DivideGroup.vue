@@ -236,6 +236,9 @@ export default {
                 list.forEach(person => {
                     if (person.group === undefined) {
                         const random = this.getRestGroupIndex(groupCount, groupObj);
+                        if (random === -1) {
+                            return;
+                        }
                         groupObj[random].people.push(person); // 把人也放进组中
                         person.group = random; // 每个人也记录分组数据
                     }
