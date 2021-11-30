@@ -20,6 +20,10 @@ Vue.use(VueRouter);
 
 const routes = [
     {
+        path: '/',
+        component: DivideGroup
+    },
+    {
         path: '/people',
         component: People
     },

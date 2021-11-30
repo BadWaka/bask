@@ -114,7 +114,6 @@ export default {
 .h800 {
     height: 800px;
     overflow-y: scroll;
-    overflow-x: hidden;
 }
 .position-tips {
     padding-top: 20px;
