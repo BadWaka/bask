@@ -9,8 +9,10 @@ import 'element-ui/lib/theme-chalk/index.css';
 import './styles/global.css';
 
 import App from './App.vue';
+import Index from './views/Index.vue';
 import People from './views/People.vue';
 import DivideGroup from './views/DivideGroup.vue';
+import Login from './views/Login.vue';
 
 Vue.config.productionTip = false;
 
@@ -21,7 +23,7 @@ Vue.use(VueRouter);
 const routes = [
     {
         path: '/',
-        component: DivideGroup
+        component: Index
     },
     {
         path: '/people',
@@ -30,6 +32,10 @@ const routes = [
     {
         path: '/divideGroup',
         component: DivideGroup
+    },
+    {
+        path: '/login',
+        component: Login
     }
 ];
 

@@ -2,12 +2,12 @@
     <div class="header">
         <div
             class="left-text"
+            @click="handleLogoClick"
         >
             B A S K
         </div>
         <div>
             <el-menu
-                :default-active="activeIndex"
                 mode="horizontal"
                 class="el-menu-demo"
                 @select="handleSelect"
@@ -17,6 +17,9 @@
                 </el-menu-item>
                 <el-menu-item index="2">
                     分组抽签
+                </el-menu-item>
+                <el-menu-item index="3">
+                    登录
                 </el-menu-item>
                 <!-- <el-menu-item index="3">
                     排位积分管理
@@ -42,10 +45,14 @@ export default {
     },
     data: function () {
         return {
-            activeIndex: '2'
+            activeIndex: '-1'
         }
     },
     methods: {
+        handleLogoClick() {
+            this.activeIndex = -1;
+            this.$router.push('/');
+        },
         handleSelect(index, indexPath) {
             console.log('handleSelect index', index, 'indexPath', indexPath, 'activeIndex', this.activeIndex);
             if (index === '1') {
@@ -53,6 +60,9 @@ export default {
             }
             else if (index === '2') {
                 this.$router.push('divideGroup');
+            }
+            else if (index === '3') {
+                this.$router.push('login');
             }
         }
     }
@@ -73,6 +83,7 @@ export default {
     .left-text {
         font-size: 20px;
         font-weight: bold;
+        cursor: pointer;
     }
 }
 </style>
