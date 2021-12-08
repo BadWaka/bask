@@ -115,9 +115,12 @@ html, body {
     background-color: #FF3333;
     border-color: #FF3333;
 }
+.el-button--primary:hover {
+    opacity: .8;
+}
 .el-button--primary:focus, .el-button--primary:hover {
     background: #FF3333;
     border-color: #FF3333;
     color: #FFF;
-    opacity: .8;
+    /* opacity: .8; */
 }
