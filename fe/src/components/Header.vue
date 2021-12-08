@@ -1,38 +1,42 @@
 <template>
     <div class="header">
         <div
-            class="left-text"
-            @click="handleLogoClick"
+            class="inner"
         >
-            B A S K
-        </div>
-        <div>
-            <el-menu
-                mode="horizontal"
-                class="el-menu-demo"
-                @select="handleSelect"
+            <div
+                class="left-text"
+                @click="handleLogoClick"
             >
-                <el-menu-item index="1">
-                    人员管理
-                </el-menu-item>
-                <el-menu-item index="2">
-                    分组抽签
-                </el-menu-item>
-                <el-menu-item index="3">
-                    登录
-                </el-menu-item>
-                <!-- <el-menu-item index="3">
-                    排位积分管理
-                </el-menu-item>
-                <el-menu-item index="4">
-                    外部友谊赛
-                </el-menu-item> -->
-                <!-- <el-submenu index="3">
-                    <template slot="title">内部赛</template>
-                    <el-menu-item index="3-1">分组抽签</el-menu-item>
-                    <el-menu-item index="3-2">赛程</el-menu-item>
-                </el-submenu> -->
-            </el-menu>
+                B A S K
+            </div>
+            <div>
+                <el-menu
+                    mode="horizontal"
+                    class="el-menu-demo"
+                    @select="handleSelect"
+                >
+                    <el-menu-item index="1">
+                        人员管理
+                    </el-menu-item>
+                    <el-menu-item index="2">
+                        分组抽签
+                    </el-menu-item>
+                    <el-menu-item index="3">
+                        登录
+                    </el-menu-item>
+                    <!-- <el-menu-item index="3">
+                        排位积分管理
+                    </el-menu-item>
+                    <el-menu-item index="4">
+                        外部友谊赛
+                    </el-menu-item> -->
+                    <!-- <el-submenu index="3">
+                        <template slot="title">内部赛</template>
+                        <el-menu-item index="3-1">分组抽签</el-menu-item>
+                        <el-menu-item index="3-2">赛程</el-menu-item>
+                    </el-submenu> -->
+                </el-menu>
+            </div>
         </div>
     </div>
 </template>
@@ -72,18 +76,22 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 .header {
-    padding-left: 40px;
-    padding-right: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding-left: 10%;
+    padding-right: 10%;
     height: 60px;
     background: #fff;
     box-shadow: 0 2px 8px #f0f1f2;
+    box-sizing: border-box;
+    width: 100%;
     .left-text {
         font-size: 20px;
         font-weight: bold;
         cursor: pointer;
     }
+}
+.inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 </style>

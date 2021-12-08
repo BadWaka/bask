@@ -1,7 +1,7 @@
 <template>
-    <div class="divide-group p20">
+    <div class="divide-group">
         <!-- 人员信息 -->
-        <div
+        <!-- <div
             v-if="positionList"
             class="flex h400 scroll-y"
         >
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div>
             <div
@@ -60,14 +60,13 @@
 
             <div
                 v-if="groupList && groupList.length > 0"
-                class="scroll flex"
             >
                 <div
                     v-for="group, groupIndex in groupList"
                     :key="groupIndex"
                 >
                     <div
-                        class="mt20 mr20 mb20 ml20 ib width100"
+                        class="mt20 mr20 mb20 ml20 ib w100"
                     >
                         第 {{ groupIndex + 1 }} 组
                     </div>
@@ -289,24 +288,6 @@ export default {
 </script>
 
 <style scoped lang="less">
-.flex {
-    display: flex;
-}
-.f1 {
-    flex: 1;
-}
-.tac {
-    text-align: center;
-}
-.scroll-y {
-    overflow-y: scroll;
-}
-.h400 {
-    height: 400px;
-}
-.h800 {
-    height: 800px;
-}
 .person {
     padding: 20px;
     margin-top: 20px;

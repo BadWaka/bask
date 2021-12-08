@@ -2,7 +2,7 @@
     <div>
         <div
             v-if="positionList"
-            class="flex h800"
+            class="flex scroll-x"
         >
             <div
                 v-for="position, positionIndex in positionList"
@@ -84,42 +84,11 @@ export default {
 </script>
 
 <style scoped lang="less">
-.pt10 {
-    padding-top: 10px;
-}
-.pb10 {
-    padding-bottom: 10px;
-}
-.pt20 {
-    padding-top: 20px;
-}
-.pb20 {
-    padding-bottom: 20px;
-}
-.pl20 {
-    padding-left: 20px;
-}
-.pr20 {
-    padding-right: 20px;
-}
-.flex {
-    display: flex;
-}
-.f1 {
-    flex: 1;
-}
-.tac {
-    text-align: center;
-}
-.h800 {
-    height: 800px;
-    overflow-y: scroll;
-}
 .position-tips {
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    width: 200px;
+    width: 160px;
     box-sizing: border-box;
 }
 .person {
@@ -127,8 +96,8 @@ export default {
     margin-top: 20px;
     margin-left: 10px;
     margin-right: 10px;
-    width: 180px;
     box-sizing: border-box;
+    width: 140px;
     box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
     border-radius: 9px;
 }

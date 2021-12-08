@@ -69,11 +69,8 @@ export default {
 </script>
 
 <style scoped lang="less">
-.mt20 {
-    margin-top: 20px;
-}
-.pr20 {
-    padding-right: 20px;
+.people {
+    max-width: 80%;
 }
 .list {
     display: flex;

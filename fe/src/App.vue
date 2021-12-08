@@ -1,7 +1,10 @@
 <template>
     <div id="app">
         <fe-header msg="Welcome to Your Vue.js App"/>
-        <router-view></router-view>
+        <router-view
+            class="pl10p pr10p"
+        >
+        </router-view>
     </div>
 </template>
 
@@ -25,7 +28,9 @@ export default {
 
 <style>
 #app {
-    margin: 0 auto;
-    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* max-width: 1200px; */
 }
 </style>

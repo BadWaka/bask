@@ -16,6 +16,12 @@
 .pl20 {
     padding-left: 20px;
 }
+.pl10p {
+    padding-left: 10%;
+}
+.pr10p {
+    padding-right: 10%;
+}
 .pr20 {
     padding-right: 20px;
 }
@@ -34,15 +40,36 @@
 .ib {
     display: inline-block;
 }
-.width100 {
+.w100 {
     width: 100px;
 }
-.width200 {
+.w200 {
     width: 200px;
 }
 .w1000 {
     width: 1000px;
 }
+.h400 {
+    height: 400px;
+}
+.h800 {
+    height: 800px;
+}
 .scroll {
     overflow: scroll;
+}
+.scroll-x {
+    overflow-x: scroll;
+}
+.flex {
+    display: flex;
+}
+.f1 {
+    flex: 1;
+}
+.tac {
+    text-align: center;
+}
+.scroll-y {
+    overflow-y: scroll;
 }
