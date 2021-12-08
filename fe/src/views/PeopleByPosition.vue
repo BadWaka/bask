@@ -2,7 +2,7 @@
     <div>
         <div
             v-if="positionList"
-            class="flex scroll-x"
+            class="flex"
         >
             <div
                 v-for="position, positionIndex in positionList"

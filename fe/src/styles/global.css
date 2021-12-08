@@ -94,3 +94,19 @@
 html, body {
     /* background: linear-gradient(#080808, #333); */
 }
+
+/* 覆盖 element-ui */
+.el-menu {
+    background-color: #161616;
+}
+.el-menu.el-menu--horizontal {
+    border-bottom: none;
+}
+.el-menu--horizontal>.el-menu-item.is-active {
+    color: #FF3333;
+    border-bottom: 2px solid #FF3333;
+}
+.el-menu--horizontal>.el-menu-item:not(.is-disabled):focus, .el-menu--horizontal>.el-menu-item:not(.is-disabled):hover, .el-menu--horizontal>.el-submenu .el-submenu__title:hover {
+    background-color: #080808;
+    color: #FF3333;
+}
