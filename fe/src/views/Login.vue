@@ -178,6 +178,7 @@ export default {
 	bottom: -100%;
 	width: 2px;
 	height: 100%;
+	opacity: 0;
 	background: linear-gradient(#FF3333, transparent);
 	animation: move4 1s linear 0.75s infinite;
 }

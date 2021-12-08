@@ -110,3 +110,14 @@ html, body {
     background-color: #080808;
     color: #FF3333;
 }
+.el-button--primary {
+    color: #FFF;
+    background-color: #FF3333;
+    border-color: #FF3333;
+}
+.el-button--primary:focus, .el-button--primary:hover {
+    background: #FF3333;
+    border-color: #FF3333;
+    color: #FFF;
+    opacity: .8;
+}

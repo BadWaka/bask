@@ -87,6 +87,7 @@ export default {
         font-size: 20px;
         font-weight: bold;
         cursor: pointer;
+        // color: #FF3333;
     }
 }
 .inner {
