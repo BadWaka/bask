@@ -6,14 +6,29 @@
             <h2 class="fwb fs20">B A S K 俱乐部用户登录</h2>
             <div class="login_box">
                 <!-- required 就是不能为空必须在 css 效果中有很大的作用 -->
-                <input type="text" name='name' id='name' required>
+                <input
+					type="text"
+					name="name"
+					id="name"
+					required
+					v-model="username"
+				>
                 <label for="name">用户 ID</label>
             </div>
             <div class="login_box">
-                <input type="password" name='pwd' id='pwd' required="required">
+                <input
+					type="password"
+					name="pwd"
+					id="pwd"
+					required="required"
+					v-model="password"
+				>
                 <label for="pwd">密码</label>
             </div>
-            <a href="javascript:void(0)">
+            <a
+				href="javascript:void(0)"
+				@click="handleLoginBtnClick"
+			>
                 登录
                 <span></span>
                 <span></span>
@@ -25,6 +40,9 @@
 </template>
 
 <script>
+import {
+    login
+} from '../http/index';
 
 export default {
     name: 'Login',
@@ -34,12 +52,48 @@ export default {
     },
     data: () => {
         return {
-            list: []
+            list: [],
+			username: '',
+			password: ''
         };
     },
     mounted() {
     },
     methods: {
+		async handleLoginBtnClick() {
+			console.log('按钮点击事件 this.username', this.username, 'this.password', this.password);
+			if (!this.username) {
+				this.$message({
+					showClose: true,
+					message: '请输入用户名',
+					type: 'error'
+				});
+				return;
+			}
+			if (!this.password) {
+				this.$message({
+					showClose: true,
+					message: '请输入密码',
+					type: 'error'
+				});
+				return;
+			}
+			const res = await login(this.username, this.password);
+			console.log('res', res);
+			if (!res.data) {
+				this.$message({
+					showClose: true,
+					message: '用户名或密码错误',
+					type: 'error'
+				});
+				return;
+			}
+			this.$message({
+				showClose: true,
+				message: '登录成功',
+				type: 'success'
+			});
+		}
     }
 }
 </script>
