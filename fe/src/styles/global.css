@@ -55,6 +55,9 @@
 .h800 {
     height: 800px;
 }
+.h1000-min {
+    min-height: 1000px;
+}
 .scroll {
     overflow: scroll;
 }
@@ -72,4 +75,22 @@
 }
 .scroll-y {
     overflow-y: scroll;
+}
+.black-bg {
+    background-color: #080808;
+}
+.black-bg-linear {
+    background: linear-gradient(#080808, #333);
+}
+.white {
+    color: rgba(255, 255, 255, .8);
+}
+.fwb {
+    font-weight: bold;
+}
+.fs20 {
+    font-size: 20px
+}
+html, body {
+    /* background: linear-gradient(#080808, #333); */
 }

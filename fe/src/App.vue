@@ -1,8 +1,11 @@
 <template>
-    <div id="app">
+    <div
+        id="app"
+        class="black-bg-linear white"
+    >
         <fe-header msg="Welcome to Your Vue.js App"/>
         <router-view
-            class="pl10p pr10p"
+            class="pl10p pr10p h1000-min"
         >
         </router-view>
     </div>

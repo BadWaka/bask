@@ -98,6 +98,7 @@ export default {
     margin-right: 10px;
     box-sizing: border-box;
     width: 140px;
+    background-color: #222;
     box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
     border-radius: 9px;
 }

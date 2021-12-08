@@ -79,8 +79,8 @@ export default {
     padding-left: 10%;
     padding-right: 10%;
     height: 60px;
-    background: #fff;
-    box-shadow: 0 2px 8px #f0f1f2;
+    background-color: #161616;
+    // box-shadow: 0 2px 8px #333;
     box-sizing: border-box;
     width: 100%;
     .left-text {

@@ -3,11 +3,11 @@
         class="wrapper"
     >
         <div class="login">
-            <h2>Bask 俱乐部用户登录</h2>
+            <h2 class="fwb fs20">B A S K 俱乐部用户登录</h2>
             <div class="login_box">
                 <!-- required 就是不能为空必须在 css 效果中有很大的作用 -->
-                <input type="text" name='name' id='name' required/>
-                <label for="name" >用户ID</label>
+                <input type="text" name='name' id='name' required>
+                <label for="name">用户 ID</label>
             </div>
             <div class="login_box">
                 <input type="password" name='pwd' id='pwd' required="required">
@@ -53,9 +53,9 @@ export default {
 	/*让页面始终占浏览器可视区域总高度*/
 	height: 100vh;
 	/*背景渐变色*/
-	background: linear-gradient(#141e30,#243b55);
+	background: linear-gradient(#080808, #333);
 }
-.login{
+.login {
 	/*弹性布局 让子元素称为弹性项目*/
 	display: flex;
 	/*让弹性项目垂直排列  原理是改变弹性盒子的主轴方向
@@ -68,10 +68,10 @@ export default {
 	padding: 40px;
 	background-color: rgba(0, 0, 0, 0.2);
 	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
-
+	border-radius: 30px;
 }
-.login h2{
-	color: #990000;
+.login h2 {
+	color: #FF3333;
 	margin-bottom: 30px;
 }
 .login .login_box {
@@ -79,26 +79,26 @@ export default {
 	position: relative;
 	width: 100%;
 }
-.login .login_box input{
+.login .login_box input {
 	/*清除input框自带的边框和轮廓*/
 	outline: none;
 	border: none;
 	width: 100%;
 	padding: 10px 0;
 	margin-bottom: 30px;
-	color: #990000;
+	color: #FF3333;
 	font-size: 16px;
-	border-bottom: 1px solid #990000;
+	border-bottom: 1px solid #FF3333;
 	/*背景颜色为透明色*/
 	background-color: transparent;
 }
 
-.login .login_box label{
+.login .login_box label {
 	position:absolute;
 	top: 0 ;
 	left: 0;
 	padding: 10px 0;
-	color: #990000;
+	color: #FF3333;
 	/*这个属性的默认值是auto 默认是这个元素可以被点击
 	但是如果我们写了none  就是这个元素不能被点击，就好像它可见但是不能用
 	可望而不可及*/
@@ -117,17 +117,17 @@ export default {
 
 */
 .login .login_box input:focus + label,
-.login  .login_box input:valid + label{
+.login  .login_box input:valid + label {
 	top: -20px;
-	color: #03e9f4;
+	color: #FF3333;
 	font-size: 12px;
 }
 
-.login a{
+.login a {
 	/*overflow: hidden;*/
 	position: relative;
 	padding: 10px 20px;
-	color: #03e9f4;
+	color: #FF3333;
 	/*取消a表现原有的下划线*/
 	text-decoration: none;
 	/*同样加个过渡*/
@@ -136,10 +136,10 @@ export default {
 .login a:hover {
 	color: #fff;
 	border-radius: 5px;
-	background-color: #03e9f4;
-	box-shadow: 0 0 5px #03e9f4,0 0 25px #03e9f4,0 0 50px #03e9f4,0 0 100px #03e9f4;
+	background-color: #FF3333;
+	box-shadow: 0 0 5px #FF3333,0 0 25px #FF3333,0 0 50px #FF3333,0 0 100px #FF3333;
 }
-.login a span{
+.login a span {
 	position: absolute;
 }
 .login a span:first-child {
@@ -148,41 +148,41 @@ export default {
 	width: 100%;
 	height: 2px;
 	/*to right 就是往右边 下面的同理*/
-	background: linear-gradient(to right,transparent,#03e9f4);
+	background: linear-gradient(to right,transparent,#FF3333);
 	/*动画 名称  时长 linear是匀速运动 infinite是无限次运动*/
 	animation: move1 1s linear infinite;
 
 }
-.login a span:nth-child(2){
+.login a span:nth-child(2) {
 	right: 0;
 	top: -100%;
 	width: 2px;
 	height: 100%;
-	background: linear-gradient(transparent,#03e6f4);
+	background: linear-gradient(transparent,#FF3333);
 	/*这里多了个0.25s其实是延迟时间*/
 	animation: move2 1s linear 0.25s infinite;
 }
 
-.login a span:nth-child(3){
+.login a span:nth-child(3) {
 	right: -100%;
 	bottom: 0;
 	width: 100%;
 	height: 2px;
-	background: linear-gradient(to left,transparent,#03e9f4);
+	background: linear-gradient(to left,transparent,#FF3333);
 
 	animation: move3 1s linear 0.5s infinite;
 }
 
-.login a span:last-child{
+.login a span:last-child {
 	left: 0;
 	bottom: -100%;
 	width: 2px;
 	height: 100%;
-	background: linear-gradient(#03e9f4,transparent);
+	background: linear-gradient(#FF3333, transparent);
 	animation: move4 1s linear 0.75s infinite;
 }
-/*写一下动画 */
-@keyframes move1{
+/* 写一下动画 */
+@keyframes move1 {
 	0%{
 		left: -100%;
         opacity: 1;
@@ -194,7 +194,7 @@ export default {
 	}
 }
 
-@keyframes move2{
+@keyframes move2 {
 	0%{
 		top: -100%;
         opacity: 1;
@@ -206,7 +206,7 @@ export default {
 	}
 }
 
-@keyframes move3{
+@keyframes move3 {
 	0%{
 		right: -100%;
         opacity: 1;
@@ -218,7 +218,7 @@ export default {
 	}
 }
 
-@keyframes move4{
+@keyframes move4 {
 	0%{
 		bottom: -100%;
         opacity: 1;
