@@ -45,7 +45,7 @@ export default {
             list: [
                 {
                     name: '红莲扣篮',
-                    src: 'http://localhost:8848/imgs/红莲.gif'
+                    src: 'http://150.158.40.96:8848/imgs/红莲.gif'
                 },
                 {
                     name: '明月万圣节',
@@ -53,15 +53,15 @@ export default {
                 },
                 {
                     name: '魂招',
-                    src: 'http://localhost:8848/imgs/魂招.png'
+                    src: 'http://150.158.40.96:8848/imgs/魂招.png'
                 },
                 {
                     name: '麦迪',
-                    src: 'http://localhost:8848/imgs/麦迪.png'
+                    src: 'http://150.158.40.96:8848/imgs/麦迪.png'
                 },
                 {
                     name: '老北京',
-                    src: 'http://localhost:8848/imgs/老北京隔扣.jpeg'
+                    src: 'http://150.158.40.96:8848/imgs/老北京隔扣.jpeg'
                 }
             ]
         };
