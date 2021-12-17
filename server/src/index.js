@@ -4,6 +4,7 @@ const Koa = require("koa");
 const static_ = require('koa-static');
 const Router = require('koa-router');
 const cors = require('koa2-cors');
+const bodyParser = require('koa-bodyparser');
 
 const {
     getIP
@@ -29,6 +30,7 @@ app
     .use(static_(
         path.join(__dirname, '../static')
     ))
+    // 跨域
     .use(cors({
         origin: (ctx) => {
             return '*';
@@ -36,6 +38,8 @@ app
         // credentials: true,
         allowMethods: ['GET', 'POST', 'DELETE']
     }))
+    // 解析 post 请求参数
+    .use(bodyParser())
     // 路由
     .use(router.routes())
     .use(router.allowedMethods());
