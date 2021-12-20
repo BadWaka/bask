@@ -24,11 +24,23 @@ async function getPersonByName(name, dbClient) {
  * @param {*} dbClient
  */
 async function addPerson(params, dbClient) {
+    // name 不能相同
+    let person = await getPersonByName(params.name, dbClient);
+    if (person) {
+        return {
+            status: 1,
+            msg: '名称已存在'
+        };
+    }
     const dbBask = dbClient.db('bask');
     const cPeople = dbBask.collection('people');
     params.createTime = new Date().toString();
-    const person = await cPeople.insertOne(params);
-    return person;
+    person = await cPeople.insertOne(params);
+    return {
+        status: 0,
+        msg: `${params.name} 创建成功`,
+        id: person.insertedId
+    };
 }
 
 /**
@@ -37,8 +49,15 @@ async function addPerson(params, dbClient) {
  * @param {object} params
  * @param {*} dbClient
  */
-async function changePerson(params, person, dbClient) {
-    // console.log('changePerson params', params, 'person', person);
+async function changePerson(params, dbClient) {
+    // 得有这个人，并且拿到 id
+    let person = await getPersonByName(params.name, dbClient);
+    if (!person) {
+        return {
+            status: 1,
+            msg: '人员不存在'
+        };
+    }
     const dbBask = dbClient.db('bask');
     const cPeople = dbBask.collection('people');
     const res = await cPeople.update(
@@ -49,11 +68,61 @@ async function changePerson(params, person, dbClient) {
             $set: params
         }
     );
-    return res;
+    if (
+        res
+        && res.acknowledged
+    ) {
+        return {
+            status: 0,
+            msg: `${params.name} 修改成功`
+        };
+    }
+    return {
+        status: 1,
+        msg: `${params.name} 修改失败`
+    };
+}
+
+/**
+ * 删除人员
+ *
+ * @param {object} params
+ * @param {*} dbClient
+ */
+async function deletePerson(params, dbClient) {
+    console.log('deletePerson params', params);
+    // 得有这个人，并且拿到 id
+    let person = await getPersonByName(params.name, dbClient);
+    console.log('deletePerson person', person);
+    if (!person) {
+        return {
+            status: 1,
+            msg: '人员不存在'
+        };
+    }
+    const dbBask = dbClient.db('bask');
+    const cPeople = dbBask.collection('people');
+    const res = await cPeople.remove({
+        _id: person._id
+    });
+    if (
+        res
+        && res.acknowledged
+    ) {
+        return {
+            status: 0,
+            msg: `${params.name} 删除成功`
+        };
+    }
+    return {
+        status: 1,
+        msg: `${params.name} 删除失败`
+    };
 }
 
 module.exports = {
     getPersonByName,
     addPerson,
-    changePerson
+    changePerson,
+    deletePerson
 };
