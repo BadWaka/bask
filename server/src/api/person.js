@@ -23,7 +23,7 @@ async function getPersonByName(name, dbClient) {
  * @param {object} params
  * @param {*} dbClient
  */
- async function addPerson(params, dbClient) {
+async function addPerson(params, dbClient) {
     const dbBask = dbClient.db('bask');
     const cPeople = dbBask.collection('people');
     params.createTime = new Date().toString();
@@ -31,7 +31,29 @@ async function getPersonByName(name, dbClient) {
     return person;
 }
 
+/**
+ * 修改人员信息
+ *
+ * @param {object} params
+ * @param {*} dbClient
+ */
+async function changePerson(params, person, dbClient) {
+    // console.log('changePerson params', params, 'person', person);
+    const dbBask = dbClient.db('bask');
+    const cPeople = dbBask.collection('people');
+    const res = await cPeople.update(
+        {
+            _id: person._id
+        },
+        {
+            $set: params
+        }
+    );
+    return res;
+}
+
 module.exports = {
     getPersonByName,
-    addPerson
+    addPerson,
+    changePerson
 };
