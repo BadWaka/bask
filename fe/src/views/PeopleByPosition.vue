@@ -19,17 +19,13 @@
                             {{ positionObj[position].length }}
                         </span>
                     </div>
-                    <div
+                    <person
                         v-for="person, personIndex in positionObj[position]"
                         :key="personIndex"
+                        :show-position="false"
+                        v-bind="person"
                     >
-                        <div
-                            v-if="person"
-                            class="person"
-                        >
-                            {{ person.name }}
-                        </div>
-                    </div>
+                    </person>
                 </div>
             </div>
         </div>
@@ -41,8 +37,13 @@ import {
     getPeople
 } from '../http/index';
 
+import Person from '../components/Person.vue';
+
 export default {
     props: {
+    },
+    components: {
+        Person
     },
     data: () => {
         return {

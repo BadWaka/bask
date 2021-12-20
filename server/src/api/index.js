@@ -1,5 +1,6 @@
 const fs = require('fs');
 const {
+    getPersonByName,
     addPerson,
     changePerson,
     deletePerson
@@ -33,7 +34,17 @@ function api(router, app) {
         })
         // 查询人员信息
         .get('/api/getPerson', async (ctx, next) => {
-            console.log('/api/getPerson');
+            console.log('/api/getPerson ctx.query', ctx.query);
+            const person = await getPersonByName(ctx.query.name, app.dbClient);
+            if (person) {
+                delete person.password;
+                ctx.body = person;
+                return;
+            }
+            ctx.body = {
+                status: 1,
+                msg: '查询人员信息失败'
+            };
         })
         // login
         .get('/api/login', async (ctx, next) => {

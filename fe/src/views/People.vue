@@ -15,20 +15,12 @@
             v-else
             class="list"
         >
-            <div
+            <person
                 v-for="item, index in list"
                 :key="index"
-                class="item"
+                v-bind="item"
             >
-                <span
-                    class="pr20"
-                >
-                    {{ item.name }}
-                </span>
-                <span>
-                     {{ item.positionList[0] }}
-                </span>
-            </div>
+            </person>
         </div>
     </div>
 </template>
@@ -39,13 +31,15 @@ import {
 } from '../http/index';
 
 import PeopleByPosition from './PeopleByPosition.vue';
+import Person from '../components/Person.vue';
 
 export default {
     name: 'People',
     props: {
     },
     components: {
-        PeopleByPosition
+        PeopleByPosition,
+        Person
     },
     data: () => {
         return {

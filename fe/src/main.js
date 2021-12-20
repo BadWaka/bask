@@ -11,6 +11,7 @@ import './styles/global.css';
 import App from './App.vue';
 import Index from './views/Index.vue';
 import People from './views/People.vue';
+import ChangePerson from './views/ChangePerson.vue';
 import DivideGroup from './views/DivideGroup.vue';
 import Login from './views/Login.vue';
 
@@ -28,6 +29,10 @@ const routes = [
     {
         path: '/people',
         component: People
+    },
+    {
+        path: '/changePerson',
+        component: ChangePerson
     },
     {
         path: '/divideGroup',

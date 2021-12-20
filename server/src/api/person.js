@@ -2,6 +2,25 @@
  * @file 人员操作
  */
 
+const ObjectId = require('mongodb').ObjectId;
+
+/**
+ * 根据 id 找到人
+ *
+ * @param {string} id
+ * @param {*} dbClient
+ */
+async function getPersonById(_id, dbClient) {
+    console.log('getPersonById _id', _id);
+    const dbBask = dbClient.db('bask');
+    const cPeople = dbBask.collection('people');
+    const person = await cPeople.findOne({
+        _id: ObjectId(_id)
+    });
+    console.log('person', person);
+    return person;
+}
+
 /**
  * 根据名字找到人
  *
@@ -51,7 +70,7 @@ async function addPerson(params, dbClient) {
  */
 async function changePerson(params, dbClient) {
     // 得有这个人，并且拿到 id
-    let person = await getPersonByName(params.name, dbClient);
+    let person = await getPersonById(params._id, dbClient);
     if (!person) {
         return {
             status: 1,
@@ -60,6 +79,7 @@ async function changePerson(params, dbClient) {
     }
     const dbBask = dbClient.db('bask');
     const cPeople = dbBask.collection('people');
+    delete params._id; // 删除 _id 避免更新数据库时报错
     const res = await cPeople.update(
         {
             _id: person._id
@@ -121,6 +141,7 @@ async function deletePerson(params, dbClient) {
 }
 
 module.exports = {
+    getPersonById,
     getPersonByName,
     addPerson,
     changePerson,
