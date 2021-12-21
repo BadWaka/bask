@@ -7,6 +7,13 @@
         >
             {{ isByPosition ? '全部显示' : '根据位置显示' }}
         </el-button>
+        <el-button
+            type="primary"
+            class="ml20"
+            @click="handleAddPersonBtn"
+        >
+            添加新成员
+        </el-button>
         <people-by-position
             v-if="isByPosition"
         >
@@ -57,6 +64,9 @@ export default {
         },
         handleByPositionClick() {
             this.isByPosition = !this.isByPosition;
+        },
+        handleAddPersonBtn() {
+            this.$router.push(`/changePerson`);
         }
     }
 }
