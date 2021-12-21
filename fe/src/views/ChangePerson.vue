@@ -73,6 +73,13 @@
             >
                 取消
             </el-button>
+            <el-button
+                v-if="type === 'change'"
+                type="warning"
+                @click="handleDeleteClick"
+            >
+                删除成员
+            </el-button>
         </div>
 
     </div>
@@ -82,6 +89,7 @@
 import {
     getPerson,
     changePerson,
+    deletePerson,
     addPerson
 } from '../http/index';
 
@@ -148,6 +156,24 @@ export default {
         handleCancelClick() {
             this.$router.back(-1);
         },
+        async handleDeleteClick() {
+            this.$confirm(
+                '此操作将永久删除该成员, 是否继续?',
+                '提示',
+                {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }
+            ).then(() => {
+                this.delete();
+            }).catch(() => {
+                this.$message({
+                    type: 'info',
+                    message: '已取消删除'
+                });
+            });
+        },
         async change() {
             const res = await changePerson({
                 _id: this.person._id,
@@ -198,6 +224,29 @@ export default {
             this.$message({
                 showClose: true,
                 message: res.data.msg || `${this.person.name} 新增失败`,
+                type: 'error'
+            });
+        },
+        async delete() {
+            const res = await deletePerson({
+                _id: this.person._id
+            });
+            if (
+                res
+                && res.data
+                && res.data.status === 0
+            ) {
+                this.$message({
+                    showClose: true,
+                    message: res.data.msg,
+                    type: 'success'
+                });
+                this.$router.back(-1);
+                return;
+            }
+            this.$message({
+                showClose: true,
+                message: res.data.msg || `${this.person.name} 删除失败`,
                 type: 'error'
             });
         }

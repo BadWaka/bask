@@ -112,7 +112,7 @@ async function changePerson(params, dbClient) {
 async function deletePerson(params, dbClient) {
     console.log('deletePerson params', params);
     // 得有这个人，并且拿到 id
-    let person = await getPersonByName(params.name, dbClient);
+    let person = await getPersonById(params._id, dbClient);
     console.log('deletePerson person', person);
     if (!person) {
         return {
@@ -131,12 +131,12 @@ async function deletePerson(params, dbClient) {
     ) {
         return {
             status: 0,
-            msg: `${params.name} 删除成功`
+            msg: `${person.name} 删除成功`
         };
     }
     return {
         status: 1,
-        msg: `${params.name} 删除失败`
+        msg: `${person.name} 删除失败`
     };
 }
 
