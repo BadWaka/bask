@@ -4,6 +4,10 @@
 
 const ObjectId = require('mongodb').ObjectId;
 
+const {
+    genToken
+} = require('../auth/index');
+
 /**
  * 根据 id 找到人
  *
@@ -11,13 +15,11 @@ const ObjectId = require('mongodb').ObjectId;
  * @param {*} dbClient
  */
 async function getPersonById(_id, dbClient) {
-    console.log('getPersonById _id', _id);
     const dbBask = dbClient.db('bask');
     const cPeople = dbBask.collection('people');
     const person = await cPeople.findOne({
         _id: ObjectId(_id)
     });
-    console.log('person', person);
     return person;
 }
 
@@ -110,10 +112,8 @@ async function changePerson(params, dbClient) {
  * @param {*} dbClient
  */
 async function deletePerson(params, dbClient) {
-    console.log('deletePerson params', params);
     // 得有这个人，并且拿到 id
     let person = await getPersonById(params._id, dbClient);
-    console.log('deletePerson person', person);
     if (!person) {
         return {
             status: 1,
@@ -140,10 +140,41 @@ async function deletePerson(params, dbClient) {
     };
 }
 
+/**
+ * 登录
+ *
+ * @param {object} params
+ * @param {*} dbClient
+ */
+async function login(params, dbClient) {
+    const dbBask = dbClient.db('bask');
+    const cPeople = dbBask.collection('people');
+    const person = await cPeople.findOne({
+        username: params.username,
+        password: params.password
+    });
+    if (
+        person
+        && person._id
+    ) {
+        const token = genToken(person._id);
+        return {
+            status: 0,
+            msg: `${person.name} 登录成功`,
+            token
+        };
+    }
+    return {
+        status: 1,
+        msg: `${person.name} 登录失败`
+    };
+}
+
 module.exports = {
     getPersonById,
     getPersonByName,
     addPerson,
     changePerson,
-    deletePerson
+    deletePerson,
+    login
 };

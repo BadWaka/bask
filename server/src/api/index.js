@@ -3,8 +3,12 @@ const {
     getPersonByName,
     addPerson,
     changePerson,
-    deletePerson
+    deletePerson,
+    login
 } = require('./person');
+const {
+    authLogin
+} = require('../auth/index');
 
 function api(router, app) {
     router
@@ -46,23 +50,18 @@ function api(router, app) {
                 msg: '查询人员信息失败'
             };
         })
-        // login
-        .get('/api/login', async (ctx, next) => {
-            console.log('ctx.query', ctx.query);
-            const {
-                username,
-                password
-            } = ctx.query;
-            ctx.body = '登录成功';
-            const dbClient = app.dbClient;
-            const dbBask = dbClient.db('bask');
-            const cPeople = dbBask.collection('people');
-            const people = await cPeople.findOne({
-                username,
-                password
-            });
-            ctx.body = JSON.stringify(people);
+        // 登录
+        .post('/api/login', async (ctx, next) => {
+            const res = await login(ctx.request.body, app.dbClient);
+            ctx.cookies.set('LOGIN_TOKEN', res.token);
+            ctx.body = res;
         })
+        // 校验登录状态
+        .get('/api/authLogin', async (ctx, next) => {
+            const token = ctx.cookies.get('LOGIN_TOKEN');
+            console.log('/api/authLogin token', token);
+            const res = authLogin(token);
+        });
 }
 
 module.exports = {
