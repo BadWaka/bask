@@ -102,6 +102,9 @@ export default {
 				message: '登录成功',
 				type: 'success'
 			});
+			setTimeout(() => {
+				location.reload();
+			}, 1000);
 		}
     }
 }
