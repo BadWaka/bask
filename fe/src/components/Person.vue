@@ -20,6 +20,7 @@
 export default {
     name: 'Header',
     props: {
+        loginPerson: Object,
         name: String,
         positionList: Array,
         showPosition: {
@@ -33,6 +34,9 @@ export default {
     },
     methods: {
         handlePersonClick() {
+            if (!this.loginPerson) {
+                return;
+            }
             this.$router.push(`/changePerson?name=${this.name}`);
         }
     }

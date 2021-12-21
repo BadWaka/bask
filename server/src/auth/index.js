@@ -43,7 +43,7 @@ function authLogin(token) {
         console.error('authLogin token 为空');
         return;
     }
-    const res = verifyToken(token);
+    return verifyToken(token);
 }
 
 module.exports = {

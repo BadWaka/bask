@@ -2,7 +2,15 @@
     <div
         class="wrapper"
     >
-        <div class="login">
+		<div
+			v-if="loginPerson"
+		>
+			{{ loginPerson.name }} 您已登录
+		</div>
+        <div
+			v-else
+			class="login"
+		>
             <h2 class="fwb fs20">B A S K 俱乐部用户登录</h2>
             <div class="login_box">
                 <!-- required 就是不能为空必须在 css 效果中有很大的作用 -->
@@ -47,6 +55,7 @@ import {
 export default {
     name: 'Login',
     props: {
+		loginPerson: Object
     },
     components: {
     },

@@ -22,7 +22,7 @@
                         分组抽签
                     </el-menu-item>
                     <el-menu-item index="3">
-                        登录
+                        {{ loginPerson ? loginPerson.name : '登录' }}
                     </el-menu-item>
                     <!-- <el-menu-item index="3">
                         排位积分管理
@@ -42,10 +42,11 @@
 </template>
 
 <script>
+
 export default {
     name: 'Header',
     props: {
-        msg: String
+        loginPerson: Object
     },
     data: function () {
         return {

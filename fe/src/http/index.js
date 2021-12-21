@@ -1,8 +1,8 @@
 const axios = require('axios');
 
 // const config = require('./config.json');
-// const host = `https://www.baskclub.com`;
-const host = `http://localhost:8848`;
+const host = `https://www.baskclub.com`;
+// const host = `http://localhost:8848`;
 
 async function getPeople() {
     const res = await axios({
@@ -85,11 +85,23 @@ async function login(username, password) {
     return res;
 }
 
+async function authLogin() {
+    const res = await axios({
+        url: `${host}/api/authLogin`,
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json'
+        }
+    });
+    return res;
+}
+
 module.exports = {
     getPeople,
     getPerson,
     changePerson,
     addPerson,
     deletePerson,
-    login
+    login,
+    authLogin
 };

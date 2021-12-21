@@ -23,6 +23,7 @@
                         v-for="person, personIndex in positionObj[position]"
                         :key="personIndex"
                         :show-position="false"
+                        :login-person="loginPerson"
                         v-bind="person"
                     >
                     </person>
@@ -41,6 +42,7 @@ import Person from '../components/Person.vue';
 
 export default {
     props: {
+        loginPerson: Object
     },
     components: {
         Person

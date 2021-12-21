@@ -2,84 +2,78 @@
     <div class="change-person">
 
         <div
-            class="mt20"
+            v-if="loginPerson"
         >
-            {{ person && person.name ? '修改' : '新增' }}人员信息
-        </div>
 
-        <div
-            v-if="person"
-            class="mt20"
-        >
-            <el-input
-                v-model="person.name"
-                :style="{
-                    width: '50%'
-                }"
-                placeholder="请输入修改后的名字"
+            <div
+                class="mt20"
             >
-            </el-input>
-        </div>
-
-        <div
-            v-if="positionList"
-            class="mt20"
-        >
-            <!-- <div
-                v-for="position, positionIndex in person.positionList"
-                :key="positionIndex"
-            >
-                {{ position }}
-            </div> -->
-
-            <div>
-                <el-radio
-                    v-for="position in positionList"
-                    :key="position"
-                    :label="position"
-                    v-model="mainPosition"
-                >
-                    {{ position }}
-                </el-radio>
+                {{ person && person.name ? '修改' : '新增' }}人员信息
             </div>
 
-            <!-- <el-checkbox-group
-                v-model="person.positionList"
-                @change="handlePositionListChange"
+            <div
+                v-if="person"
+                class="mt20"
             >
-                <el-checkbox
-                    v-for="position in positionList"
-                    :label="position"
-                    :key="position"
+                <el-input
+                    v-model="person.name"
+                    :style="{
+                        width: '50%'
+                    }"
+                    placeholder="请输入修改后的名字"
                 >
-                    {{ position }}
-                </el-checkbox>
-            </el-checkbox-group> -->
+                </el-input>
+            </div>
+
+            <div
+                v-if="positionList"
+                class="mt20"
+            >
+
+                <div>
+                    <el-radio
+                        v-for="position in positionList"
+                        :key="position"
+                        :label="position"
+                        v-model="mainPosition"
+                    >
+                        {{ position }}
+                    </el-radio>
+                </div>
+
+            </div>
+
+            <div
+                class="mt20"
+            >
+                <el-button
+                    type="primary"
+                    @click="handleConfirmClick"
+                >
+                    确认
+                </el-button>
+                <el-button
+                    type="info"
+                    @click="handleCancelClick"
+                >
+                    取消
+                </el-button>
+                <el-button
+                    v-if="type === 'change'"
+                    type="warning"
+                    @click="handleDeleteClick"
+                >
+                    删除成员
+                </el-button>
+            </div>
 
         </div>
 
         <div
+            v-else
             class="mt20"
         >
-            <el-button
-                type="primary"
-                @click="handleConfirmClick"
-            >
-                确认
-            </el-button>
-            <el-button
-                type="info"
-                @click="handleCancelClick"
-            >
-                取消
-            </el-button>
-            <el-button
-                v-if="type === 'change'"
-                type="warning"
-                @click="handleDeleteClick"
-            >
-                删除成员
-            </el-button>
+            您还未登录
         </div>
 
     </div>
@@ -96,6 +90,7 @@ import {
 export default {
     name: 'ChangePerson',
     props: {
+        loginPerson: Object
     },
     data: () => {
         return {

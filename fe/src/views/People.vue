@@ -8,6 +8,7 @@
             {{ isByPosition ? '全部显示' : '根据位置显示' }}
         </el-button>
         <el-button
+            v-if="loginPerson"
             type="primary"
             class="ml20"
             @click="handleAddPersonBtn"
@@ -16,6 +17,7 @@
         </el-button>
         <people-by-position
             v-if="isByPosition"
+            :login-person="loginPerson"
         >
         </people-by-position>
         <div
@@ -25,6 +27,7 @@
             <person
                 v-for="item, index in list"
                 :key="index"
+                :login-person="loginPerson"
                 v-bind="item"
             >
             </person>
@@ -43,6 +46,7 @@ import Person from '../components/Person.vue';
 export default {
     name: 'People',
     props: {
+        loginPerson: Object
     },
     components: {
         PeopleByPosition,
