@@ -1,8 +1,8 @@
 const axios = require('axios');
 
 // const config = require('./config.json');
-// const host = `https://www.baskclub.com`;
-const host = `http://localhost:8848`;
+const host = `https://www.baskclub.com`;
+// const host = `http://localhost:8848`;
 
 async function getPeople() {
     const res = await axios({
