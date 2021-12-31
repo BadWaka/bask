@@ -95,6 +95,14 @@ function api(router, app) {
 
             const person = await getPersonById(res._id, app.dbClient);
             console.log('person', person);
+            if (!person) {
+                ctx.body = {
+                    status: 3,
+                    msg: '未找到对应人员'
+                };
+                return;
+            }
+
             delete person.password;
             ctx.body = person;
         });
