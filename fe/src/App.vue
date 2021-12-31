@@ -24,9 +24,9 @@ export default {
     name: 'App',
     data: function () {
         return {
-            // loginPerson: null
+            loginPerson: null
             // 测试
-            loginPerson: {}
+            // loginPerson: {}
         }
     },
     components: {
