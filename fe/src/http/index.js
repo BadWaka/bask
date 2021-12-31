@@ -96,6 +96,17 @@ async function authLogin() {
     return res;
 }
 
+async function getLiveList() {
+    const res = await axios({
+        url: `${host}/api/liveList`,
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json'
+        }
+    });
+    return res;
+}
+
 module.exports = {
     getPeople,
     getPerson,
@@ -103,5 +114,6 @@ module.exports = {
     addPerson,
     deletePerson,
     login,
-    authLogin
+    authLogin,
+    getLiveList
 };

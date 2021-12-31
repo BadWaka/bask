@@ -17,6 +17,9 @@ async function getLiveList(dbClient) {
         }
     }).toArray();
     console.log('getLiveList people', people);
+    people.forEach(people => {
+        people && delete people.password;
+    });
     return people;
 }
 
