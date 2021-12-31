@@ -67,6 +67,12 @@
 .flex {
     display: flex;
 }
+.f-jc-sb {
+    justify-content: space-between;
+}
+.f-ai-c {
+    align-items: center;
+}
 .f1 {
     flex: 1;
 }
