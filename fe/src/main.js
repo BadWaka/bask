@@ -14,6 +14,7 @@ import People from './views/People.vue';
 import ChangePerson from './views/ChangePerson.vue';
 import DivideGroup from './views/DivideGroup.vue';
 import Login from './views/Login.vue';
+import Live from './views/Live.vue';
 
 Vue.config.productionTip = false;
 
@@ -41,6 +42,10 @@ const routes = [
     {
         path: '/login',
         component: Login
+    },
+    {
+        path: '/live',
+        component: Live
     }
 ];
 

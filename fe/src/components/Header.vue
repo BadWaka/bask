@@ -16,12 +16,15 @@
                     @select="handleSelect"
                 >
                     <el-menu-item index="1">
-                        人员管理
+                        直播
                     </el-menu-item>
                     <el-menu-item index="2">
-                        分组抽签
+                        人员管理
                     </el-menu-item>
                     <el-menu-item index="3">
+                        分组抽签
+                    </el-menu-item>
+                    <el-menu-item index="4">
                         {{ loginPerson ? loginPerson.name : '登录' }}
                     </el-menu-item>
                     <!-- <el-menu-item index="3">
@@ -61,12 +64,15 @@ export default {
         handleSelect(index, indexPath) {
             console.log('handleSelect index', index, 'indexPath', indexPath, 'activeIndex', this.activeIndex);
             if (index === '1') {
-                this.$router.push('people');
+                this.$router.push('live');
             }
             else if (index === '2') {
-                this.$router.push('divideGroup');
+                this.$router.push('people');
             }
             else if (index === '3') {
+                this.$router.push('divideGroup');
+            }
+            else if (index === '4') {
                 this.$router.push('login');
             }
         }

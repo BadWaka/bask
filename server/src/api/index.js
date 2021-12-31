@@ -1,4 +1,5 @@
 const fs = require('fs');
+
 const {
     getPersonByName,
     getPersonById,
@@ -7,6 +8,11 @@ const {
     deletePerson,
     login
 } = require('./person');
+
+const {
+    getLiveList
+} = require('./live');
+
 const {
     authLogin
 } = require('../auth/index');
@@ -26,6 +32,11 @@ function api(router, app) {
             const cPeople = dbBask.collection('people');
             const people = await cPeople.find({}).toArray();
             ctx.body = JSON.stringify(people);
+        })
+
+        // 获取所有直播列表
+        .get('/api/liveList', async (ctx, next) => {
+            ctx.body = await getLiveList(app.dbClient);
         })
 
         // 新增人员
